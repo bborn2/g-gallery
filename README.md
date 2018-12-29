@@ -1,8 +1,9 @@
 # g-gallery
 
-#install
+## install
 go get github.com/GeertJohan/go.rice
+
 go build g-gallery
 
-#run
-./g-gallery -d . -p 7000
+## run
+./g-gallery -p 7000 -d /home/user/gallery

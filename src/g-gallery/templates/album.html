@@ -13,7 +13,7 @@
         <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-        <a class="navbar-brand" href="#">G-Gallery</a>
+        <a class="navbar-brand" href="https://bborn2.github.io/g-gallery/">G-Gallery</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,37 +22,7 @@
             <li class="active"><a href="/">Home</a></li>
              
         </ul>
-        <ul class="nav navbar-nav navbar-right" style="padding-right: 10px">
-            <li class="help">
-                <a href="#"><i class="glyphicon glyphicon-question-sign"></i></a>
-                <div class="dropdown-menu">
-                    <h3>/album/</h3>
-
-<h4>Shortcut key</h4>
-
-<p><code>Up</code>/<code>Down</code> : Pre/Next Image<br/><code>Ctrl</code> + <code>Left/Right</code> : Pre/Next Image<br/><code>Ctrl</code> + <code>A</code> : Select All<br/><code>Ctrl</code> + <code>R</code> : Reverse All<br/><code>Esc</code> : Cancel All Select<br/><code>Ctrl</code>+ <code>Enter</code> : Select the image displayed in the current screen<br/><code>Ctrl</code> + <code>Del</code> : Delete images Selected  </p>
-
-<h4>Jump Box</h4>
-
-<p>Jump to Nth page Mth image，input N:M  </p>
-
-<h3>/folder/</h3>
-
-<h4>Shortcut key</h4>
-
-<p><code>Ctrl</code> + <code>A</code> : Select All<br/><code>Ctrl</code> + <code>R</code> : Reverse All<br/><code>Esc</code> : Cancel All Select<br/><code>Ctrl</code> + <code>Del</code> : Delete images Selected <br/><code>Ctrl</code> + <code>Shift</code> + <code>M</code> : Start/Stop multiple select mode   </p>
-
-<h4>Multiple select mode</h4>
-
-<p>Click on the image item will trigger select operation on it only when &quot;multiple select mode&quot; is on   </p>
-
-<h4>Change gallery base directory</h4>
-
-<p><strong>Change</strong> to override the origin <br/><strong>Add</strong> to keep the origin and append one   </p>
-                </div>
-            </li>
-           
-        </ul>
+      
     </div><!-- /.navbar-collapse -->
 </nav>
     </header>
@@ -73,40 +43,7 @@
  
 
 <div class="img-item">
-    <div class="img-meta">
-        <a href="#" class="img-metabg-sign"><span class="glyphicon glyphicon-info-sign"></span></a>
-
-        <div class="img-metabg">
-            <table>
-                <tbody>
-                <tr>
-                    <th>path</th>
-                    <td>local//Users/songkun01/Documents/lab/gotest/static/img/test1/timg.jpg</td>
-                </tr>
-                <tr>
-                    <th>height x height</th>
-                    <td>650 x 386</td>
-                </tr>
-                <tr>
-                    <th>size</th>
-                    <td>20 KB</td>
-                </tr>
-                <tr>
-                    <th>ctime</th>
-                    <td>Wed Dec 26 2018 13:39:20 GMT+0800 (CST)</td>
-                </tr>
-                <tr>
-                    <th>mtime</th>
-                    <td>Mon Dec 24 2018 16:57:48 GMT+0800 (CST)</td>
-                </tr>
-                <tr>
-                    <th>atime</th>
-                    <td>Thu Dec 27 2018 14:57:15 GMT+0800 (CST)</td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    
     <a href="#" class="img">
         <div class="img-wrapper">
             <img src="{{.Url}}" id="pic1"
@@ -123,37 +60,12 @@
 <!-- end of #album-container -->
 
 <!-- pagination -->
-<div class="container">
-    <ul class="pagination">
-        <li><a href="/album//Users/songkun01/Documents/lab/gotest/static/img/test1" class="first">&laquo;</a></li>
-        
-        <li class=active><a href="/album//Users/songkun01/Documents/lab/gotest/static/img/test1?pn=1">1</a></li>
-        
-        <li><a href="/album//Users/songkun01/Documents/lab/gotest/static/img/test1?pn=1" class="last">&raquo;</a></li>
-    </ul>
-</div>
+ 
 <div class="get-top">
     <a href="#" class="up"><span class="glyphicon glyphicon-chevron-up"></span></a>
     <a href="#" class="down"><span class="glyphicon glyphicon-chevron-down"></span></a>
 </div>
-<!-- Modal -->
-<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title" id="myModalLabel">Delete Confirmation</h4>
-            </div>
-            <div class="modal-body">
-                Delete Confirmation？
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button id="delete-OK" type="button" class="btn btn-primary">OK</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+
 </body>
 <script src="/static/js/jquery-1.10.2.min.js"></script>
 <script src="/static/js/jquery.hotkeys.js"></script>
@@ -162,58 +74,9 @@
 <script>
 $(function () {
 
-    // show image properties
-    $('.img-meta a').click(function(e) {
-        $(this).next('.img-metabg').toggleClass('img-metabg-open');
-        e.preventDefault();
-        e.stopPropagation();
-    });
+     
 
-    var selector = {
-        'item': '.img-item img',
-        'wrapper': '.img-item',
-        'selected_class': 'item-selected',
-        'del_pop': '#del-selected>a',
-        'badge_selected': '#selected-badge',
-        'badge_total': '#item-count-badge'
-    };
-    var selectItems = new SelectItems(selector, 'pic');
-
-    var operationSelector = {
-        select_one: '.img-item',
-        select_reverse: '#reverse-selected',
-        select_all: '#all-selected',
-        select_all_cancel: '#cancel-selected',
-        
-        select_delete: '#del-selected',
-        select_delete_modal: '#delete-modal',
-        select_delete_one: '.img-opr'
-        
-    };
-    selectItems.bindOperation(operationSelector);
-    selectItems.bindHotKeys();
-    $(document).on('deleteSelectSuccess',function (e) {
-        itemScroll.refresh();
-        $('#delete-modal').modal('hide');
-        
-    }).on('deleteSelectFail', function (e) {
-        $('#delete-modal').modal('hide');
-    }).on('deleteOneSuccess', function () {
-        // delay for the delete animation
-        setTimeout(function() { itemScroll.refresh(); }, 550);
-    });
-
-    // show delete button
-    $('.img-item').hover(function () {
-        var $this = $(this);
-        $this.find('.img-opr').show();
-        $this.find('.img-metabg-sign').show();
-    }, function () {
-        var $this = $(this);
-        $this.find('.img-opr').hide();
-        $this.find('.img-metabg-sign').hide();
-    });
-
+    
     // zoom in/out
     $('#zoom-in').click(function (e) {
         var width = parseInt($('.img-item').css('width')) * 1.1 + 'px';
@@ -228,19 +91,7 @@ $(function () {
         e.preventDefault();
     });
 
-
-    var itemScroll = new ItemScroll({
-        selector: selector.item,
-        badge_sel: '#img-nav-board',
-        margin: 30
-    });
-
-    $(window).load(function () {
-        itemScroll.refresh();
-    });
-    $(document).scroll(function () {
-        itemScroll.process();
-    });
+ 
 
     $('#img-nav').hover(function () {
         $(this).children('.nav').show();
@@ -249,9 +100,7 @@ $(function () {
         $(this).children('.nav').hide();
     });
 
-    var pn = location.search.match(/pn=(\d+)/);
-    pn = pn ? pn[1] : 1;
-    $('#img-nav-pn').text(pn);
+    
     
     $('#img-nav-pre').click(function (e) {
         itemScroll.scrollN(-1);
@@ -262,29 +111,7 @@ $(function () {
         e.preventDefault();
     });
 
-    var hotKeys = [
-        'up',
-        'down',
-        'ctrl+left',
-        'ctrl+right'
-    ];
-    $(document).bind('keydown', hotKeys[0], function() {
-        $('#img-nav-pre').click();
-    }).bind('keydown', hotKeys[1], function() {
-        $('#img-nav-next').click();
-    }).bind('keydown', hotKeys[2], function() {
-        var curPageNum = +$('.pagination > .active > a').text();
-        if (curPageNum <= 1) { return; }
-        var redirectUrl = location.origin + location.pathname + '?pn=' + (curPageNum - 1);
-        location.assign(redirectUrl);
-    }).bind('keydown', hotKeys[3], function() {
-        var curPageNum = +$('.pagination > .active > a').text();
-        var maxPageNum = +$('.pagination li:last a').attr('href').split('pn=')[1];
-        if (maxPageNum <= curPageNum) { return; }
-        var redirectUrl = location.origin + location.pathname + '?pn=' + (curPageNum + 1);
-        location.assign(redirectUrl);
-    });
-
+     
     // jump to Nth page Mth image
     $("#jump-to-item button").click(function (e) {
         e.preventDefault();
@@ -323,21 +150,7 @@ $(function () {
         }
     });
 
-    // get top
-    $('.get-top .up').click(function() {
-        e.preventDefault();
-        $(document).scrollTop(0);
-    });
-    $('.get-top .down').click(function(e) {
-        e.preventDefault();
-        $(document).scrollTop($(document).height());
-    });
-
-    // Help Document
-    $('.help').click(function(e) {
-        e.preventDefault();
-        $(this).toggleClass('open');
-    });
+   
 
 });
 </script>

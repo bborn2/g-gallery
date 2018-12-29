@@ -5,7 +5,7 @@ import (
     "path"
     "os"
     "sort"
-    // "fmt"
+    "fmt"
     // "io/ioutil"
     "strings"
     "errors"
@@ -116,7 +116,7 @@ func getSubDirInfo(dirPath string) (f folder){
 
 func listDir(dirPath string) (folders []*folder, err error) {
 
-    dir, err := ReadDir(dirPath, false)
+    dir, err := ReadDir(dirPath, true)
     if err != nil {
         return nil, err
     }
@@ -126,6 +126,11 @@ func listDir(dirPath string) (folders []*folder, err error) {
     for _, fi := range dir {
         
         if fi.IsDir() {
+
+            if strings.HasPrefix(fi.Name(), "."){
+                continue
+            }
+
             f := getSubDirInfo(path.Join(dirPath, fi.Name()))
 
             if f.SubFolderCount >0 ||  f.ImageCount > 0{
@@ -140,10 +145,10 @@ func listDir(dirPath string) (folders []*folder, err error) {
 
                 if(imgFolder.Name == ""){
                     imgFolder.Name = filepath.Base(dirPath)
-                    imgFolder.Cover = getFileUrlPath(path.Join(dirPath, fi.Name()))
                     imgFolder.SubFolderCount = 0
                     imgFolder.Url = getAlbumUrlPath(dirPath)
                     imgFolder.ImageCount = 1
+                    imgFolder.Cover = getFileUrlPath(path.Join(dirPath, fi.Name()))
                 }
 
                 imgFolder.ImageCount++
@@ -192,7 +197,7 @@ func getBasePath(dirPath *string) (string, error){
     }
 
     if !d.IsDir() {
-        // fmt.Println("folder not exist")
+        fmt.Println("not a directory")
         return "", errors.New("not a directory")
     }
 

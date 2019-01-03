@@ -116,7 +116,7 @@ func getSubDirInfo(dirPath string) (f folder){
 
 func listDir(dirPath string) (folders []*folder, err error) {
 
-    dir, err := ReadDir(dirPath, true)
+    dir, err := ReadDir(dirPath, false)
     if err != nil {
         return nil, err
     }
@@ -148,9 +148,9 @@ func listDir(dirPath string) (folders []*folder, err error) {
                     imgFolder.SubFolderCount = 0
                     imgFolder.Url = getAlbumUrlPath(dirPath)
                     imgFolder.ImageCount = 1
-                    imgFolder.Cover = getFileUrlPath(path.Join(dirPath, fi.Name()))
                 }
 
+                imgFolder.Cover = getFileUrlPath(path.Join(dirPath, fi.Name()))
                 imgFolder.ImageCount++
             }
         }
